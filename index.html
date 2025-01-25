@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div1{
+            text-align: center;
+            margin: 10px;
+            border: 2px solid;
+            height: 250px;
+            width: 500px;
+            margin-left: 500px;   
+            background-color: antiquewhite;
+        }
+        #inputtext{
+            font-size: 25px;
+            border-radius: 20px;
+            text-align: center;
+            width: 250px;
+        }
+        #submit{
+            font-size: 20px;
+            width: 100px;
+            background-color: lightskyblue;
+        }
+        #submit:hover{
+            background-color: antiquewhite;
+        }
+         .div{
+             text-align: center; 
+            border: 2px solid;
+            width: 500px;
+            margin-left: 500px;
+            height: 200px;
+            background-color: antiquewhite;
+        }
+        #btn{
+            font-size: 20px;
+        }
+        #btn:hover{
+            background-color: lightskyblue;
+        }
+        #otp{
+            font-size: 25px;
+        } 
+    </style>
+</head>
+<body>
+    <div class="div1">
+    <h1>Even or Odd</h1>
+    <form id="myform">
+        <input type="number" id="inputtext" placeholder="Enter your Number"><br><br><br>
+        <button id="submit">check</button>
+        <h2 id="h2"></h2>
+    </form>
+    </div><br><br>
+    <div class="div">
+        <h1 id="h1">6-Digit OTP Number</h1>
+        <button id="btn" onclick="add()">Genarate OTP</button>
+        <p id="otp"></p>
+        </div>
+    <script>
+        let form=document.getElementById("myform")
+        let h2=document.getElementById("h2")
+        form.addEventListener("submit",function(event){
+            event.preventDefault();
+            let num=document.getElementById("inputtext").value
+            if(!isNaN(num)){
+                if(num%2===0){
+                    h2.innerHTML="even number"
+                }
+                else{
+                    h2.innerHTML="odd number"
+                }
+            }
+            else
+               h2.innerHTML="please enter valid number"
+        })
+        function add(){
+        let y = Math.random() * 1000000;
+        let otp = Math.floor(y);
+        let clr;
+        if (otp < 100000) 
+             clr=(otp + 100000);
+        else
+              clr=otp;
+    
+              document.body.style.backgroundColor = `#${clr}`;
+              let gen_otp=document.getElementById("otp")
+              gen_otp.innerHTML=clr
+             document.getElementById("otp").textContent=`Your OTP is: ${otp}`
+         } 
+    </script>
+</body>
+</html>
